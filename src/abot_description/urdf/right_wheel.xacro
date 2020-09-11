@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<robot name="abot"
+	xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<!-- Right wheel CAD link -->
+	<link name="right_wheel1">
+		<inertial>
+			<origin xyz="2.6037E-18 0.00013293 5.2042E-18" rpy="0 0 0" />
+			<mass value="${wheel_mass}" />
+			<inertia ixx="1.034E-05" ixy="6.5763E-20" ixz="-6.4107E-11" iyy="1.9808E-05" iyz="1.0024E-19" izz="1.034E-05" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://abot_description/meshes/right_wheel.STL" />
+			</geometry>
+			<material name="Green" />
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://abot_description/meshes/right_wheel.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<!-- Right wheel geometry link -->
+	<link name="right_wheel">
+		<inertial>
+			<origin xyz="2.6037E-18 0.00013293 5.2042E-18" rpy="0 0 0" />
+			<mass value="${wheel_mass}" />
+			<xacro:cylinder_inertia mass="${wheel_mass}" radius="${wheel_radius}" height="${wheel_width}" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="${PI/2} 0 0" />
+			<geometry>
+				<cylinder length="${wheel_width}" radius="${wheel_radius}" />
+			</geometry>
+			<material name="Green" />
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="${PI/2} 0 0" />
+			<geometry>
+				<cylinder length="${wheel_width}" radius="${wheel_radius}" />
+			</geometry>
+		</collision>
+	</link>
+	<!-- Right wheel joints -->
+	<joint name="right_wheel_to_base" type="continuous">
+		<origin xyz="0 -0.064 0.014" rpy="0 0 0" />
+		<parent link="abot_base" />
+		<child link="right_wheel" />
+		<axis xyz="0 1 0" />
+	</joint>
+	<joint name="right_wheel_to_wheel1" type="fixed">
+		<parent link="right_wheel" />
+		<child link="right_wheel1" />
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</joint>
+</robot>
