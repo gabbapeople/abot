@@ -9,10 +9,10 @@
 #define MOTOR_2_PIN_D 12 // Wiring pi 26 = BCM 12
 #define MOTOR_2_PIN_E 13 // Wiring pi 23 = BCM 13
 
-#define MOTOR_LEFT_PWM_THRESHOLD 550
-#define MOTOR_RIGHT_PWM_THRESHOLD 550
+#define MOTOR_LEFT_PWM_THRESHOLD 200
+#define MOTOR_RIGHT_PWM_THRESHOLD 400
 
-#define MAX_ANGLUAR_WHEEL_SPEED 10 // 9.8
+#define MAX_ANGLUAR_WHEEL_SPEED 17
 
 DCMotorWiringPi left_dc_motor(MOTOR_1_PIN_D, MOTOR_1_PIN_E);
 DCMotorWiringPi right_dc_motor(MOTOR_2_PIN_D, MOTOR_2_PIN_E);
@@ -25,11 +25,11 @@ void leftMotorCallback(const std_msgs::Float32& msg) {
     double motor_spd = msg.data;
 
     uint16_t motor_pwm = mapSpeed(std::abs(motor_spd), MAX_ANGLUAR_WHEEL_SPEED, MOTOR_LEFT_PWM_THRESHOLD, RPI_MAX_PWM_VALUE);
-
+    // ROS_INFO_STREAM("LEFT: PWM: " << motor_pwm);
     if (motor_spd > 0) {
-        left_dc_motor.ccw(motor_pwm);
-    } else if (motor_spd < 0) {
         left_dc_motor.cw(motor_pwm);
+    } else if (motor_spd < 0) {
+        left_dc_motor.ccw(motor_pwm);
     } else if (motor_spd == 0) {
         left_dc_motor.stop();
     }      
@@ -39,11 +39,11 @@ void rightMotorCallback(const std_msgs::Float32& msg) {
     double motor_spd = msg.data;
 
     uint16_t motor_pwm = mapSpeed(std::abs(motor_spd), MAX_ANGLUAR_WHEEL_SPEED, MOTOR_RIGHT_PWM_THRESHOLD, RPI_MAX_PWM_VALUE);
-
+    // ROS_INFO_STREAM("RIGHT: PWM: " << motor_pwm);
     if (motor_spd > 0) {
-        right_dc_motor.ccw(motor_pwm);
-    } else if (motor_spd < 0) {
         right_dc_motor.cw(motor_pwm);
+    } else if (motor_spd < 0) {
+        right_dc_motor.ccw(motor_pwm);
     } else if (motor_spd == 0) {
         right_dc_motor.stop();
     }      

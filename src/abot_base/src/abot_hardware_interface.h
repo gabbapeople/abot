@@ -34,6 +34,9 @@ private:
     ros::Publisher _left_wheel_vel_pub;
     ros::Publisher _right_wheel_vel_pub;
 
+    ros::Publisher _left_wheel_current_vel_pub;
+    ros::Publisher _right_wheel_current_vel_pub;
+
     double _max_wheel_angular_speed;
 
     struct Joint {
@@ -70,10 +73,14 @@ AbotHardwareInterface::AbotHardwareInterface(ros::NodeHandle node, ros::NodeHand
     _private_node.param<double>("max_wheel_angular_speed", _max_wheel_angular_speed, 0.0);
 
     _left_wheel_vel_pub = _node.advertise<std_msgs::Float32>("abot/left_wheel_vel", 1);
-    _right_wheel_vel_pub = _node.advertise<std_msgs::Float32>("abot/right_swheel_vel", 1);
+    _right_wheel_vel_pub = _node.advertise<std_msgs::Float32>("abot/right_wheel_vel", 1);
 
     _left_wheel_angle_sub = _node.subscribe("abot/left_wheel_angle", 1, &AbotHardwareInterface::leftWheelAngleCallback, this);
     _right_wheel_angle_sub = _node.subscribe("abot/right_wheel_angle", 1, &AbotHardwareInterface::rightWheelAngleCallback, this);
+
+    _left_wheel_current_vel_pub = _node.advertise<std_msgs::Float32>("abot/current_left_wheel_vel", 1);
+    _right_wheel_current_vel_pub = _node.advertise<std_msgs::Float32>("abot/current_right_wheel_vel", 1);
+
 }
 
 void AbotHardwareInterface::writeCommandsToHardware() {
@@ -97,9 +104,16 @@ void AbotHardwareInterface::updateJointsFromHardware(const ros::Duration& period
     double delta_left_wheel = _left_wheel_angle - _joints[0].position - _joints[0].position_offset;
     double delta_right_wheel = _right_wheel_angle - _joints[1].position - _joints[1].position_offset;
 
+    std_msgs::Float32 left_wheel_current_vel_msg;
+    std_msgs::Float32 right_wheel_current_vel_msg;
+
     if (std::abs(delta_left_wheel) < 1) {
         _joints[0].position += delta_left_wheel;
         _joints[0].velocity = delta_left_wheel / period.toSec();
+
+        left_wheel_current_vel_msg.data = _joints[0].velocity;
+        _left_wheel_current_vel_pub.publish(left_wheel_current_vel_msg);
+
     } else {
         _joints[0].position_offset += delta_left_wheel;
     }
@@ -107,6 +121,9 @@ void AbotHardwareInterface::updateJointsFromHardware(const ros::Duration& period
     if (std::abs(delta_right_wheel) < 1) {
         _joints[1].position += delta_right_wheel;
         _joints[1].velocity = delta_right_wheel / period.toSec();
+
+        right_wheel_current_vel_msg.data = _joints[1].velocity;
+        _right_wheel_current_vel_pub.publish(right_wheel_current_vel_msg);
 
     } else {
         _joints[1].position_offset += delta_right_wheel;

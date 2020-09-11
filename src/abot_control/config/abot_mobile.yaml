@@ -9,18 +9,18 @@ abot:
 
     wheel_separation_multiplier: 1.0 # default: 1.0
     wheel_radius_multiplier    : 1.0 # default: 1.0
-    cmd_vel_timeout: 0.25
+    cmd_vel_timeout: 0.1
     base_frame_id: base_footprint
     linear:
       x:
         has_velocity_limits : true
-        max_velocity : 0.15 # m/s
+        max_velocity : 0.05 # m/s
         #has_acceleration_limits: true
         #max_acceleration : 0.3 # m/s^2
     angular:
       z:
         has_velocity_limits : true
-        max_velocity : 0.785 # rad/s
+        max_velocity : 0.05 # rad/s
         #has_acceleration_limits: true
         #max_acceleration : 3.14 # rad/s^2
   enable_odom_tf: true

@@ -44,7 +44,7 @@ int main(int argc, char** argv)
     
     while (ros::ok()) {
 
-        double current_angle_left = 1 * encoderLeft.getRotation();
+        double current_angle_left = -1 * encoderLeft.getRotation();
         double current_angle_right = 1 * encoderRight.getRotation();
         
         angle_left = normalize(current_angle_left - initial_angle_left);
