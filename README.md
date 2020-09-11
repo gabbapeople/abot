@@ -1,2 +1,2 @@
-# abot
-Amperka ROS robot.
+# The Amperka robot "Abot".
+RPI4, ROS, DiffDrive, RPLidar, SLAM.
