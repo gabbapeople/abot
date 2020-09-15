@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<robot name="abot"
+	xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<!-- Lidar CAD link -->
+	<link name="laser_link">
+		<inertial>
+			<origin xyz="-0.0117447996907351 0.000733413771450669 -0.0207612184785914" rpy="0 0 0" />
+			<mass value="0.0792299931684322" />
+			<inertia ixx="2.1072498226581E-05" ixy="-2.60332316458837E-08" ixz="4.4882481449391E-07" iyy="2.50506950192355E-05" iyz="-1.5405159314203E-08" izz="4.37516224246332E-05" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://abot_description/meshes/laser_link.STL" />
+			</geometry>
+			<material name="Blue" />
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://abot_description/meshes/laser_link.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<!-- Lidar joint -->
+	<joint name="laser_link_to_base" type="fixed">
+		<origin xyz="0.022 0 0.18315" rpy="0 0 0" />
+		<parent link="abot_base" />
+		<child link="laser_link" />
+		<axis xyz="0 0 0" />
+	</joint>
+</robot>

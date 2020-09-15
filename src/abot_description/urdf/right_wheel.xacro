@@ -45,7 +45,7 @@
 	</link>
 	<!-- Right wheel joints -->
 	<joint name="right_wheel_to_base" type="continuous">
-		<origin xyz="0 -0.064 0.014" rpy="0 0 0" />
+		<origin xyz="0 -0.0640000000000002 0.0144999999999993" rpy="0 0 0" />
 		<parent link="abot_base" />
 		<child link="right_wheel" />
 		<axis xyz="0 1 0" />

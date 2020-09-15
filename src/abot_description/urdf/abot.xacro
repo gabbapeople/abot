@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<robot name="abot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="abot"
+	xmlns:xacro="http://www.ros.org/wiki/xacro">
 	<!-- Macro -->
 	<xacro:include filename="$(find abot_description)/urdf/macros.xacro" />
 	<!-- Matherials -->
@@ -10,7 +11,7 @@
 	<xacro:property name="caster_wheel_radius" value="0.007" />
 	<xacro:property name="wheel_width" value="0.0158" />
 	<xacro:property name="wheel_separation" value="0.128" />
-	<xacro:property name="clearance" value="0.01795" />
+	<xacro:property name="clearance" value="0.01745" />
 	<xacro:property name="wheel_mass" value="0.032704" />
 	<xacro:property name="caster_wheel_mass" value="0.011207" />
 	<!-- Base_footprint -->
@@ -47,9 +48,9 @@
 	<!-- abot_base -->
 	<link name="abot_base">
 		<inertial>
-			<origin xyz="-0.0153999844033198 8.13067891968615E-15 0.0121543976022896" rpy="0 0 0" />
-			<mass value="0.469829440847482" />
-			<inertia ixx="0.000570631411959662" ixy="2.91510421236034E-09" ixz="-2.38329846370416E-05" iyy="0.000513725189549573" iyz="1.47383106149314E-09" izz="0.000868674371165525" />
+			<origin xyz="-0.0127093410022275 -1.41221243673916E-07 0.039639861536933" rpy="0 0 0" />
+			<mass value="0.833887267376891" />
+			<inertia ixx="0.00120589522768881" ixy="6.98274532230061E-09" ixz="-2.38252631510239E-05" iyy="0.00114896877416948" iyz="1.47383105573365E-09" izz="0.00213840106572274" />
 		</inertial>
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
@@ -64,9 +65,11 @@
 				<mesh filename="package://abot_description/meshes/abot_base.STL" />
 			</geometry>
 		</collision>
-	</link>	
+	</link>
 	<!-- Wheels -->
 	<xacro:include filename="$(find abot_description)/urdf/left_wheel.xacro" />
 	<xacro:include filename="$(find abot_description)/urdf/right_wheel.xacro" />
 	<xacro:include filename="$(find abot_description)/urdf/caster_wheel.xacro" />
+	<!-- Sensors -->
+	<xacro:include filename="$(find abot_description)/urdf/sensors.xacro" />
 </robot>
