@@ -24,7 +24,7 @@
 	</link>
 	<!-- Lidar joint -->
 	<joint name="laser_link_to_base" type="fixed">
-		<origin xyz="0.022 0 0.18315" rpy="0 0 0" />
+		<origin xyz="0.022 0 0.18315" rpy="0 0 ${PI}" />
 		<parent link="abot_base" />
 		<child link="laser_link" />
 		<axis xyz="0 0 0" />
