@@ -67,4 +67,5 @@ server 192.168.88.94 minpoll 0 maxpoll 5 maxdelay .05
 root@robot-user:~# /etc/init.d/chrony stop
 root@robot-user:~# ntpdate other_computer_ip
 root@robot-user:~# /etc/init.d/chrony start
+root@robot-user:~# chronyc sources -v
 ```
