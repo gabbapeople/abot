@@ -1,7 +1,7 @@
 <launch>
 
   <!--Args-->
-  <arg name="rvizconfig" default="$(find abot_description)/rviz/abot_remote.rviz" />
+  <arg name="rvizconfig" default="$(find abot_description)/rviz/abot_remote_movement.rviz" />
   <arg name="model" default="$(find abot_description)/urdf/abot.xacro" />
 
   <!--Robot Description from URDF-->

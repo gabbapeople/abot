@@ -45,34 +45,26 @@ root@robot:~# ls -l /dev/lidar
 lrwxrwxrwx 1 root root 7 Sep 16 11:58 /dev/lidar -> ttyUSB0
 ```
 
-# NTP server RPI4
+# Chrony
 
 RPI side:
 
 ```shell
-ubuntu@robot:~$ sudo apt-get install ntp
-root@robot:~# nano /etc/ntp.conf 
+ubuntu@robot:~$ sudo apt-get install chrony
+root@robot:~# systemctl enable --now chrony
+root@robot:~# nano /etc/chrony/chrony.conf
+allow 192.168.88.0/16
+root@robot:~# systemctl restart chronyd
 ```
-```bash
-pool 0.ru.pool.ntp.org iburst
-pool 1.ru.pool.ntp.org iburst
-pool 2.ru.pool.ntp.org iburst
-pool 3.ru.pool.ntp.org iburst
 
-restrict 127.0.0.1
-restrict ::1
-
-restrict 192.168.88.0 mask 255.255.255.0 nomodify notrap
-```
+Remote machine side:
 
 ```shell
-root@robot:~# systemctl restart ntp || service restart ntp
-root@robot:~# systemctl status ntp || service status ntp
-root@robot:~# ntpq -p
-```
-
-Remote machine:
-
-```shell
-people@robot-user:~$ sudo ntpdate 192.168.88.94
+root@robot-user:~# sudo apt-get install chrony
+root@robot-user:~# ntpdate -q 192.168.88.94
+root@robot-user:~# nano /etc/chrony/chrony.conf
+server 192.168.88.94 minpoll 0 maxpoll 5 maxdelay .05
+root@robot-user:~# /etc/init.d/chrony stop
+root@robot-user:~# ntpdate other_computer_ip
+root@robot-user:~# /etc/init.d/chrony start
 ```
