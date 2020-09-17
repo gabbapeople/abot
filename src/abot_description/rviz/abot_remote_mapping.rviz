@@ -8,7 +8,6 @@ Panels:
         - /Status1
         - /LaserScan1
         - /Map1
-        - /Map1/Status1
       Splitter Ratio: 0.5
     Tree Height: 705
   - Class: rviz/Selection
@@ -29,7 +28,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: LaserScan
+    SyncSource: ""
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -126,34 +125,6 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        abot_base:
-          Value: true
-        base_footprint:
-          Value: true
-        base_link:
-          Value: true
-        caster_wheel:
-          Value: true
-        caster_wheel1:
-          Value: true
-        ds4:
-          Value: true
-        ds4_imu:
-          Value: true
-        laser_link:
-          Value: true
-        left_wheel:
-          Value: true
-        left_wheel1:
-          Value: true
-        map:
-          Value: true
-        odom:
-          Value: true
-        right_wheel:
-          Value: true
-        right_wheel1:
-          Value: true
       Marker Alpha: 1
       Marker Scale: 0.20000000298023224
       Name: TF
@@ -161,23 +132,7 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          {}
-        odom:
-          base_footprint:
-            base_link:
-              abot_base:
-                caster_wheel:
-                  caster_wheel1:
-                    {}
-                laser_link:
-                  {}
-                left_wheel:
-                  left_wheel1:
-                    {}
-                right_wheel:
-                  right_wheel1:
-                    {}
+        {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -193,16 +148,16 @@ Visualization Manager:
       Color Transformer: Intensity
       Decay Time: 0
       Enabled: true
-      Invert Rainbow: false
+      Invert Rainbow: true
       Max Color: 255; 255; 255
-      Max Intensity: 3.4237799644470215
+      Max Intensity: 2.37670636177063
       Min Color: 0; 0; 0
-      Min Intensity: -1.264721393585205
+      Min Intensity: -1.905659794807434
       Name: LaserScan
       Position Transformer: XYZ
       Queue Size: 10
       Selectable: true
-      Size (Pixels): 3
+      Size (Pixels): 1
       Size (m): 0.009999999776482582
       Style: Points
       Topic: scan
@@ -248,7 +203,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 7.18456506729126
+      Distance: 49.076263427734375
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -264,9 +219,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6153981685638428
+      Pitch: 1.385398030281067
       Target Frame: <Fixed Frame>
-      Yaw: 3.1554064750671387
+      Yaw: 3.1154067516326904
     Saved: ~
 Window Geometry:
   Displays:
