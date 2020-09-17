@@ -69,3 +69,15 @@ root@robot-user:~# ntpdate other_computer_ip
 root@robot-user:~# /etc/init.d/chrony start
 root@robot-user:~# chronyc sources -v
 ```
+
+# Rsync
+
+```shell
+people@robot-user:~/ROS_TEMP$ rsync -avz -e ssh ubuntu@robot:ROS/abot/ abot/
+```
+
+RPI
+```shell
+ubuntu@robot:~$ cd ROS/abot
+ubuntu@robot:~$ rsync -avz -e ssh people@robot-user:ROS_TEMP/abot/src src
+```

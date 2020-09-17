@@ -22,9 +22,9 @@ double mapSpeed(double angluar_wheel_speed, double max_angluar_wheel_speed, doub
 
 void leftMotorCallback(const std_msgs::Float32& msg) {
     double spd = msg.data;
-    uint16_t pwm = mapSpeed(std::abs(motor_spd), MAX_ANGLUAR_WHEEL_SPEED, MOTOR_LEFT_PWM_THRESHOLD, RPI_MAX_PWM_VALUE);
+    uint16_t pwm = mapSpeed(std::abs(spd), MAX_ANGLUAR_WHEEL_SPEED, MOTOR_LEFT_PWM_THRESHOLD, RPI_MAX_PWM_VALUE);
 
-    ROS_INFO_STREAM("LEFT MOTOR:    SPD: %f    PWM: %d", spd, pwm);
+    ROS_INFO("LEFT MOTOR:    SPD: %f    PWM: %d", spd, pwm);
     
     if (spd > 0) {
         left_dc_motor.cw(pwm);
@@ -37,9 +37,9 @@ void leftMotorCallback(const std_msgs::Float32& msg) {
 
 void rightMotorCallback(const std_msgs::Float32& msg) {
     double spd = msg.data;
-    uint16_t pwm = mapSpeed(std::abs(motor_spd), MAX_ANGLUAR_WHEEL_SPEED, MOTOR_LEFT_PWM_THRESHOLD, RPI_MAX_PWM_VALUE);
+    uint16_t pwm = mapSpeed(std::abs(spd), MAX_ANGLUAR_WHEEL_SPEED, MOTOR_LEFT_PWM_THRESHOLD, RPI_MAX_PWM_VALUE);
 
-    ROS_INFO_STREAM("RIGHT MOTOR:    SPD: %f    PWM: %d", spd, pwm);
+    ROS_INFO("RIGHT MOTOR:    SPD: %f    PWM: %d", spd, pwm);
     
     if (spd > 0) {
         right_dc_motor.ccw(pwm);
