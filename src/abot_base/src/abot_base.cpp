@@ -28,11 +28,12 @@ int main(int argc, char** argv) {
     ros::NodeHandle private_node("~");
 
     double control_frequency;
-    double max_speed;
+    double max_wheel_angular_speed;
 
-    private_node.param<double>("control_frequency", control_frequency, 10.0);
-    
-    AbotHardwareInterface hardware(node, private_node);
+    private_node.param<double>("control_frequency", control_frequency, 1.0);
+    private_node.param<double>("max_wheel_angular_speed", max_wheel_angular_speed, 1.0);
+
+    AbotHardwareInterface hardware(node, private_node, max_wheel_angular_speed);
 
     controller_manager::ControllerManager cm(&hardware, node);
 

@@ -13,7 +13,7 @@
 
 	<!-- abot teleop node -->
 	<node pkg="abot_teleop" type="abot_teleop" name="abot_teleop" >
-		<param name="linear_speed_scale" type="double" value="0.16605"/> 
+		<param name="linear_speed_scale" type="double" value="0.16"/> 
 		<param name="angular_speed_scale" type="double" value="1.25"/>
 	</node>
 </launch>

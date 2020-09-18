@@ -16,7 +16,7 @@
 
 class AbotHardwareInterface : public hardware_interface::RobotHW {
 public:
-    AbotHardwareInterface(ros::NodeHandle node, ros::NodeHandle private_node);
+    AbotHardwareInterface(ros::NodeHandle node, ros::NodeHandle private_node, double target_max_wheel_angular_speed);
 
     void updateJointsFromHardware(const ros::Duration& period);
     void writeCommandsToHardware();
@@ -64,13 +64,12 @@ private:
     void limitDifferentialSpeed(double& diff_speed_left_side, double& diff_speed_right_side);
 };
 
-AbotHardwareInterface::AbotHardwareInterface(ros::NodeHandle node, ros::NodeHandle private_node)
+AbotHardwareInterface::AbotHardwareInterface(ros::NodeHandle node, ros::NodeHandle private_node, double target_max_wheel_angular_speed)
     : _node(node)
-    , _private_node(private_node) {
+    , _private_node(private_node)
+    , _max_wheel_angular_speed(target_max_wheel_angular_speed) {
 
     registerControlInterfaces();
-
-    _private_node.param<double>("max_wheel_angular_speed", _max_wheel_angular_speed, 0.0);
 
     _left_wheel_vel_pub = _node.advertise<std_msgs::Float32>("abot/left_wheel_vel", 1);
     _right_wheel_vel_pub = _node.advertise<std_msgs::Float32>("abot/right_wheel_vel", 1);

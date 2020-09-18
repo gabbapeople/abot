@@ -4,9 +4,8 @@
 	<param name="robot_description" command="$(find xacro)/xacro '$(find abot_description)/urdf/abot.xacro' --inorder"/>
 	
       <!-- Base node -->
-
       <node name="abot_base_node" pkg="abot_base" type="abot_base_node" output="screen">
-            <param name="control_frequency" type="double" value="100.0"/> 
+            <param name="control_frequency" type="double" value="10.0"/>
 	      <param name="max_wheel_angular_speed" type="double" value="20.8"/>
       </node>
 	<!-- Load controller config -->
