@@ -6,8 +6,8 @@
       <!-- Base node -->
 
       <node name="abot_base_node" pkg="abot_base" type="abot_base_node" output="screen">
-            <param name="control_frequency" type="double" value="50.0"/> 
-	      <param name="max_wheel_angular_speed" type="double" value="5.0"/>
+            <param name="control_frequency" type="double" value="100.0"/> 
+	      <param name="max_wheel_angular_speed" type="double" value="20.8"/>
       </node>
 	<!-- Load controller config -->
 	<rosparam command="load" file="$(find abot_control)/config/abot_mobile.yaml"/>

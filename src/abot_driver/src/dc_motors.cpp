@@ -9,10 +9,10 @@
 #define MOTOR_2_PIN_D 12 // Wiring pi 26 = BCM 12
 #define MOTOR_2_PIN_E 13 // Wiring pi 23 = BCM 13
 
-#define MOTOR_LEFT_PWM_THRESHOLD 170
-#define MOTOR_RIGHT_PWM_THRESHOLD 180
+#define MOTOR_LEFT_PWM_THRESHOLD 159
+#define MOTOR_RIGHT_PWM_THRESHOLD 168
 
-#define MAX_ANGLUAR_WHEEL_SPEED 17
+#define MAX_ANGLUAR_WHEEL_SPEED 20.8
 
 DCMotorWiringPi left_dc_motor(MOTOR_1_PIN_D, MOTOR_1_PIN_E);
 DCMotorWiringPi right_dc_motor(MOTOR_2_PIN_D, MOTOR_2_PIN_E);

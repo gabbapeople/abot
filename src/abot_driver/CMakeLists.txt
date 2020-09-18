@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(abot_driver)
 
+add_compile_options(-std=c++11)
+
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
@@ -24,6 +26,9 @@ target_link_libraries(encoder_wiring_pi_test ${catkin_LIBRARIES} -lwiringPi -lpt
 
 add_executable(dc_motor_wiring_pi_test src/test/dc_motor_wiring_pi_test.cpp)
 target_link_libraries(dc_motor_wiring_pi_test ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt -lm -lrt)
+
+add_executable(max_vel_accel_test src/test/max_vel_accel_test.cpp)
+target_link_libraries(max_vel_accel_test ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt -lm -lrt)
 
 # NODES
 add_executable(encoders src/encoders.cpp)

@@ -79,5 +79,12 @@ people@robot-user:~/ROS_TEMP$ rsync -avz -e ssh ubuntu@robot:ROS/abot/ abot/
 RPI
 ```shell
 ubuntu@robot:~$ cd ROS/abot
-ubuntu@robot:~$ rsync -avz -e ssh people@robot-user:ROS_TEMP/abot/src src
+ubuntu@robot:~$ rsync -avz -e ssh people@robot-user:ROS_DEV/abot/src src
+```
+
+# RPI Headless Boot without HDMI
+
+```shell
+ubuntu@robot:~$ sudo nano /boot/firmware/config.txt
+hdmi_force_hotplug=1
 ```
