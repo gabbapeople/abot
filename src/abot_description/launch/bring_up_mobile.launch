@@ -5,6 +5,6 @@
 
     <include file="$(find abot_base)/launch/base.launch" />  
     <include file="$(find abot_teleop)/launch/abot_teleop.launch" />
-    <include file="$(find abot_navigation)/launch/gmapping.launch" />
-    <!-- <include file="$(find abot_navigation)/launch/navigation.launch" /> -->
+    <include file="$(find abot_base)/launch/lidar.launch" />
+
 </launch>

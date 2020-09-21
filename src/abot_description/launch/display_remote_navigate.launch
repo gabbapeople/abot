@@ -9,5 +9,7 @@
 
   <!--Rviz-->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="false"/>
-
+  
+  <!--Navigation-->
+  <include file="$(find abot_navigation)/launch/move_base.launch" />
 </launch>

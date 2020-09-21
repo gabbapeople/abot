@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   roslaunch
   hardware_interface
+  rplidar_ros
 )
 
 catkin_package(
@@ -15,6 +16,7 @@ catkin_package(
   	controller_manager 
   	roscpp 
   	hardware_interface
+    rplidar_ros
 )
 
 include_directories(

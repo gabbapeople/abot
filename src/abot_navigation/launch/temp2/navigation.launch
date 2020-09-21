@@ -3,15 +3,11 @@
     <arg name="cmd_vel_topic" default="/abot/mobile_abot/cmd_vel"/>
     <arg name="odom_topic" default="/abot/mobile_abot/odom" /> 
 
-    <include file="$(find abot_navigation)/launch/lidar.launch" />
-    <arg name="scan_topic" default="scan" />
-
     <!-- <param name="/use_sim_time" value="false" /> -->
     <!-- <remap from="scan" to= "/abot/scan" /> -->
 
     <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" output="screen">
         <rosparam file="$(find abot_navigation)/config/slam_gmapping_params.yaml" command="load" />
-        <remap from="scan" to="$(arg scan_topic)"/>
     </node>
 
 
@@ -27,7 +23,8 @@
 
     </node> -->
 
-    <arg name="no_static_map" default="true"/>
+    <arg name="no_static_map" default="false"/>
+
     <arg name="base_global_planner" default="navfn/NavfnROS"/>
     <arg name="base_local_planner" default="dwa_local_planner/DWAPlannerROS"/>
 
@@ -55,8 +52,8 @@
 
         <!-- global costmap with laser, for odom_navigation_demo -->
         <rosparam file="$(find abot_navigation)/config/costmap_global_laser.yaml" command="load" ns="global_costmap" if="$(arg no_static_map)"/>
-        <param name="global_costmap/width" value="50.0" if="$(arg no_static_map)"/>
-        <param name="global_costmap/height" value="50.0" if="$(arg no_static_map)"/>
+        <param name="global_costmap/width" value="10.0" if="$(arg no_static_map)"/>
+        <param name="global_costmap/height" value="10.0" if="$(arg no_static_map)"/>
     </node>
 
 

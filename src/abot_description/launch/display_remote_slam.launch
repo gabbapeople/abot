@@ -10,4 +10,7 @@
   <!--Rviz-->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="false"/>
 
+  <!-- Nodes -->
+   <include file="$(find abot_slam)/launch/abot_slam.launch" />
+
 </launch>
