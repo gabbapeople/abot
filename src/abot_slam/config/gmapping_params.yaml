@@ -1,5 +1,15 @@
-map_update_interval: 2.0
-maxUrange: 3.0
+# How long (in seconds) between updates to the map.
+# Lowering this number updates the occupancy grid more often,
+# at the expense of greater computational load. (float, default: 5.0) 
+map_update_interval: 0.5
+
+# The maximum usable range of the laser. A beam is cropped to this value. (float, default: 80.0)
+# Should be just less than sensor range
+maxUrange: 11.50
+
+# Should be just greater than sensor range
+maxRange: 12.50
+
 sigma: 0.05
 kernelSize: 1
 lstep: 0.05
@@ -8,21 +18,31 @@ iterations: 5
 lsigma: 0.075
 ogain: 3.0
 lskip: 0
-minimumScore: 50
-srr: 0.1
-srt: 0.2
-str: 0.1
-stt: 0.2
-linearUpdate: 1.0
-angularUpdate: 0.2
-temporalUpdate: 0.5
+
+# Process a scan each time the robot translates this far (float, default: 1.0) 
+linearUpdate: 0.3
+
+# Process a scan each time the robot rotates this far (float, default: 0.5)  
+angularUpdate: 0.1
+
+# Process a scan if the last scan processed is older than the update time in seconds.
+# A value less than zero will turn time based updates off. (float, default: -1.0) 
+temporalUpdate: 2.0
+
+# The Neff based resampling threshold  (float, default: 0.5)
 resampleThreshold: 0.5
+
+# Number of particles in the filter (int, default: 30)
 particles: 100
-xmin: -10.0
-ymin: -10.0
-xmax: 10.0
-ymax: 10.0
-delta: 0.05
+
+xmin: -20.0
+ymin: -20.0
+xmax: 20.0
+ymax: 20.0
+
+# Resolution of the map (in metres per occupancy grid block) (float, default: 0.05) 
+delta: 0.015
+
 llsamplerange: 0.01
 llsamplestep: 0.01
 lasamplerange: 0.005

@@ -86,3 +86,12 @@ ubuntu@robot:~$ rsync -avz -e ssh people@robot-user:ROS_DEV/abot/src src
 ubuntu@robot:~$ sudo nano /boot/firmware/config.txt
 hdmi_force_hotplug=1
 ```
+
+# ROS manual package install
+
+Exmaple, melodic package to noetic: 
+```shell
+root@robot-user:/home/people/ROS_PACKAGES# source /opt/ros/noetic/setup.bash
+root@robot-user:/home/people/ROS_PACKAGES# catkin_make -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic install
+root@robot-user:/home/people/ROS_PACKAGES# rospack find gmapping
+```

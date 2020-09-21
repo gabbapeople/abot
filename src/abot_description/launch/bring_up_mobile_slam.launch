@@ -1,0 +1,12 @@
+<launch>
+
+    <node name="encoders" pkg="abot_driver" type="encoders" output="screen" />
+    <node name="dc_motors" pkg="abot_driver" type="dc_motors" output="screen" />
+
+    <include file="$(find abot_base)/launch/base.launch" />  
+    <include file="$(find abot_teleop)/launch/abot_teleop.launch" />
+    <include file="$(find abot_base)/launch/lidar.launch" />
+
+    <include file="$(find abot_slam)/launch/abot_slam.launch" />
+
+</launch>

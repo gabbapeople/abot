@@ -36,3 +36,6 @@ target_link_libraries(encoders ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt 
 
 add_executable(dc_motors src/dc_motors.cpp)
 target_link_libraries(dc_motors ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt -lm -lrt)
+
+add_executable(sharp_sensors src/sharp_sensors.cpp)
+target_link_libraries(sharp_sensors ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt -lm -lrt)

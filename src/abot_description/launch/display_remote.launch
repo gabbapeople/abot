@@ -1,7 +1,7 @@
 <launch>
 
   <!--Args-->
-  <arg name="rvizconfig" default="$(find abot_description)/rviz/abot_remote_slam.rviz" />
+  <arg name="rvizconfig" default="$(find abot_description)/rviz/abot_remote_mapping.rviz" />
   <arg name="model" default="$(find abot_description)/urdf/abot.xacro" />
 
   <!--Robot Description from URDF-->
@@ -9,8 +9,5 @@
 
   <!--Rviz-->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="false"/>
-
-  <!-- Nodes -->
-  <include file="$(find abot_slam)/launch/abot_slam.launch" />
 
 </launch>

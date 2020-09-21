@@ -30,8 +30,8 @@ int main(int argc, char** argv)
 
     ros::Rate sleep_rate(50);
 
-    std_msgs::Float32 leftWheelMsg;
-    std_msgs::Float32 rightWheelMsg;
+    std_msgs::Float32 left_wheel_msg;
+    std_msgs::Float32 right_wheel_msg;
 
     double initial_angle_left;
     double initial_angle_right;
@@ -50,11 +50,11 @@ int main(int argc, char** argv)
         angle_left = normalize(current_angle_left - initial_angle_left);
         angle_right = normalize(current_angle_right - initial_angle_right);
         
-        leftWheelMsg.data = angle_left;
-        rightWheelMsg.data = angle_right;
+        left_wheel_msg.data = angle_left;
+        right_wheel_msg.data = angle_right;
 
-        leftSideAnglePub.publish(leftWheelMsg);
-        rightSideAnglePub.publish(rightWheelMsg);
+        leftSideAnglePub.publish(left_wheel_msg);
+        rightSideAnglePub.publish(right_wheel_msg);
 
         sleep_rate.sleep();
     }
