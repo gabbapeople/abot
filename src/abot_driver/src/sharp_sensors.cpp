@@ -14,10 +14,10 @@
 
 double mapClipDistance(double raw_distance) {
     double distance; 
-    if (raw_distance < 3.0) {
-        distance = 0.030;
-    } else if (raw_distance > 25.0) {
-        distance = 10.0; // 10 meters
+    if (raw_distance < SENSOR_MIN_RANGE) {
+        distance = SENSOR_MIN_RANGE;
+    } else if (raw_distance > SENSOR_MAX_RANGE) {
+        distance = SENSOR_MAX_RANGE; 
     } else {
         distance = raw_distance / 100; // cm to meters
     }

@@ -2,6 +2,7 @@
 
     <node name="encoders" pkg="abot_driver" type="encoders" output="screen" />
     <node name="dc_motors" pkg="abot_driver" type="dc_motors" output="screen" />
+    <node name="sharp_sensors" pkg="abot_driver" type="sharp_sensors" output="screen" />
 
     <include file="$(find abot_base)/launch/base.launch" />  
     <include file="$(find abot_teleop)/launch/abot_teleop.launch" />
