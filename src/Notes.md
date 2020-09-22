@@ -95,3 +95,9 @@ root@robot-user:/home/people/ROS_PACKAGES# source /opt/ros/noetic/setup.bash
 root@robot-user:/home/people/ROS_PACKAGES# catkin_make -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic install
 root@robot-user:/home/people/ROS_PACKAGES# rospack find gmapping
 ```
+
+# ROS map saver
+
+```shell
+rosrun map_server map_saver -f src/abot_slam/map/map1
+```

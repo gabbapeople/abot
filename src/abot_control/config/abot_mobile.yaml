@@ -4,8 +4,8 @@ abot:
     left_wheel: 'left_wheel_to_base'
     right_wheel: 'right_wheel_to_base'
     publish_rate: 50.0
-    pose_covariance_diagonal : [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
-    twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
+    pose_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
+    twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
 
     wheel_separation_multiplier: 1.0 # default: 1.0
     wheel_radius_multiplier    : 1.0 # default: 1.0

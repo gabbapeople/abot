@@ -9,14 +9,14 @@
 			<inertia ixx="2.1072498226581E-05" ixy="-2.60332316458837E-08" ixz="4.4882481449391E-07" iyy="2.50506950192355E-05" iyz="-1.5405159314203E-08" izz="4.37516224246332E-05" />
 		</inertial>
 		<visual>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="0 0 ${PI}" />
 			<geometry>
 				<mesh filename="package://abot_description/meshes/laser_link.STL" />
 			</geometry>
-			<material name="Blue" />
+			<material name="Yellow" />
 		</visual>
 		<collision>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="0 0 ${PI}" />
 			<geometry>
 				<mesh filename="package://abot_description/meshes/laser_link.STL" />
 			</geometry>
@@ -27,6 +27,90 @@
 		<origin xyz="0.022 0 0.18315" rpy="0 0 ${PI}" />
 		<parent link="abot_base" />
 		<child link="laser_link" />
+		<axis xyz="0 0 0" />
+	</joint>
+	<!-- IR sensor front middle CAD link -->
+	<link name="ir_fm">
+		<inertial>
+			<origin xyz="-0.0193778284817564 0.0517927266118569 0.000510012680068063" rpy="0 0 0" />
+			<mass value="0.0029706780872837" />
+			<inertia ixx="2.75251627428986E-07" ixy="9.10709415904095E-08" ixz="-7.93160400909887E-10" iyy="1.17636929894439E-07" iyz="8.3896081509796E-11" izz="2.95301311766455E-07" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://abot_description/meshes/ir_fm.STL" />
+			</geometry>
+			<material name="Yellow" />
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://abot_description/meshes/ir_fm.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<!-- IR sensor front middle joint -->
+	<joint name="ir_fm_to_base" type="fixed">
+		<origin xyz="0.0812 0 -0.0065" rpy="0 0 0" />
+		<parent link="abot_base" />
+		<child link="ir_fm" />
+		<axis xyz="0 0 0" />
+	</joint>
+	<!-- IR sensor front left CAD link -->
+	<link name="ir_fl">
+		<inertial>
+			<origin xyz="-0.00737194484411242 0.000279264844105703 0.000510014496335439" rpy="0 0 0" />
+			<mass value="0.00297067826138337" />
+			<inertia ixx="3.16734695808955E-07" ixy="-5.89288167867935E-09" ixz="-6.76347714169545E-10" iyy="7.61538286810033E-08" iyz="4.22675785570517E-10" izz="2.95301261269084E-07" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://abot_description/meshes/ir_fl.STL" />
+			</geometry>
+			<material name="Yellow" />
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://abot_description/meshes/ir_fl.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<!-- IR sensor front left joint -->
+	<joint name="ir_fl_to_base" type="fixed">
+		<origin xyz="0.068572 0.054769 -0.0065" rpy="0 0 0.45321" />
+		<parent link="abot_base" />
+		<child link="ir_fl" />
+		<axis xyz="0 0 0" />
+	</joint>
+	<!-- IR sensor front right CAD link -->
+	<link name="ir_fr">
+		<inertial>
+			<origin xyz="-0.0073719435479474 0.000279266429044269 0.000510012687927432" rpy="0 0 0" />
+			<mass value="0.00297067925092848" />
+			<inertia ixx="3.16734825741921E-07" ixy="-5.89285028889523E-09" ixz="-6.76367534098839E-10" iyy="7.61538418054215E-08" iyz="4.2267880693731E-10" izz="2.95301389790314E-07" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://abot_description/meshes/ir_fr.STL" />
+			</geometry>
+			<material name="Yellow" />
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://abot_description/meshes/ir_fr.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<!-- IR sensor front right joint -->
+	<joint name="ir_fr_to_base" type="fixed">
+		<origin xyz="0.0685721788194783 -0.0547694638499224 -0.00650000000000129" rpy="0 0 -0.45320639368436" />
+		<parent link="abot_base" />
+		<child link="ir_fr" />
 		<axis xyz="0 0 0" />
 	</joint>
 </robot>

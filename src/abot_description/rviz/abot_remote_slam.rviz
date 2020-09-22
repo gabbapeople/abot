@@ -86,6 +86,21 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        ir_fl:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ir_fm:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ir_fr:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         laser_link:
           Alpha: 1
           Show Axes: false
@@ -132,6 +147,12 @@ Visualization Manager:
           Value: true
         caster_wheel1:
           Value: true
+        ir_fl:
+          Value: true
+        ir_fm:
+          Value: true
+        ir_fr:
+          Value: true
         laser_link:
           Value: true
         left_wheel:
@@ -161,6 +182,12 @@ Visualization Manager:
                   caster_wheel:
                     caster_wheel1:
                       {}
+                  ir_fl:
+                    {}
+                  ir_fm:
+                    {}
+                  ir_fr:
+                    {}
                   laser_link:
                     {}
                   left_wheel:
@@ -211,6 +238,36 @@ Visualization Manager:
       Unreliable: false
       Use Timestamp: false
       Value: true
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz/Range
+      Color: 255; 0; 255
+      Enabled: true
+      Name: IR_FM
+      Queue Size: 1
+      Topic: /ir_sensor_front_middle
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz/Range
+      Color: 255; 0; 255
+      Enabled: true
+      Name: IR_FL
+      Queue Size: 1
+      Topic: /ir_sensor_front_left
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz/Range
+      Color: 255; 0; 255
+      Enabled: true
+      Name: IR_FR
+      Queue Size: 1
+      Topic: /ir_sensor_front_right
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -248,10 +305,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 178.84776306152344
+      Scale: 161.9366455078125
       Target Frame: <Fixed Frame>
-      X: 0.4846826493740082
-      Y: -0.38986968994140625
+      X: 1.3526833057403564
+      Y: -0.5695956945419312
     Saved: ~
 Window Geometry:
   Displays:

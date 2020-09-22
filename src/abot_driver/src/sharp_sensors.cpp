@@ -13,25 +13,33 @@
 #define SENSOR_MAX_RANGE 0.370
 
 double mapClipDistance(double raw_distance) {
-    double distance; 
-    if (raw_distance < SENSOR_MIN_RANGE) {
-        distance = SENSOR_MIN_RANGE;
-    } else if (raw_distance > SENSOR_MAX_RANGE) {
-        distance = SENSOR_MAX_RANGE; 
-    } else {
-        distance = raw_distance / 100; // cm to meters
-    }
+    double distance;
+    raw_distance = raw_distance / 100; // cm to meters
+
+    // if (raw_distance < SENSOR_MIN_RANGE) {
+    //     distance = 0;
+    // } else if (raw_distance > SENSOR_MAX_RANGE) {
+    //     distance = SENSOR_MAX_RANGE + 0.01; 
+    // } else {
+    //     distance = raw_distance;
+    // }
+    distance = raw_distance;
+    return distance;
 }
 
-void prepareRangeMsg(SharpIR_GP2Y0A41SK_WiringPi sensor, std::string frame, sensor_msgs::Range &range_msg) {
+sensor_msgs::Range prepareRangeMsg(SharpIR_GP2Y0A41SK_WiringPi sensor, std::string frame) {
+
+    sensor_msgs::Range range_msg;
 
     range_msg.header.stamp = ros::Time::now();
     range_msg.header.frame_id = frame;
     range_msg.radiation_type = 1;
-    range_msg.field_of_view = 0;
+    range_msg.field_of_view = 0.25;
     range_msg.min_range = SENSOR_MIN_RANGE;
     range_msg.max_range = SENSOR_MAX_RANGE;
     range_msg.range = mapClipDistance(sensor.getDistance());
+
+    return range_msg;
 
 }
 
@@ -58,12 +66,13 @@ int main(int argc, char **argv) {
 
     while (ros::ok()) {
 
-        prepareRangeMsg(ir_sensor_front_middle, "ir_sensor_f_m", ir_sensor_front_middle_msg);
-        prepareRangeMsg(ir_sensor_front_left, "ir_sensor_f_l", ir_sensor_front_left_msg);
-        prepareRangeMsg(ir_sensor_front_right, "ir_sensor_f_r", ir_sensor_front_right_msg);
-
+        ir_sensor_front_middle_msg = prepareRangeMsg(ir_sensor_front_middle, "ir_fm");
         ir_sensor_front_middle_pub.publish(ir_sensor_front_middle_msg);
+
+        ir_sensor_front_left_msg = prepareRangeMsg(ir_sensor_front_left, "ir_fl");
         ir_sensor_front_left_pub.publish(ir_sensor_front_left_msg);
+
+        ir_sensor_front_right_msg = prepareRangeMsg(ir_sensor_front_right, "ir_fr");
         ir_sensor_front_right_pub.publish(ir_sensor_front_right_msg);
 
         sleep_rate.sleep();
