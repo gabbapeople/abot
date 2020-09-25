@@ -1,0 +1,31 @@
+# footprint:
+#   - [0.0800, 0]
+#   - [0.0703, -0.0406]
+#   - [0.0423, -0.0732]
+#   - [0.0250, -0.0829]
+#   - [0.0250, -0.1250]
+#   - [-0.0250, -0.1250]
+#   - [-0.0250, -0.0887]
+#   - [-0.0437, -0.0819]
+#   - [-0.0817, -0.0468]
+#   - [-0.1000, 0]
+#   - [-0.0817, 0.0468]
+#   - [-0.0437, 0.0819]
+#   - [-0.0250, 0.0887]
+#   - [-0.0250, 0.1250]
+#   - [0.0250, 0.1250]
+#   - [0.0250, 0.0829]
+#   - [0.0423, 0.0732]
+#   - [0.0703, 0.0406]
+
+robot_radius: 0.115
+
+obstacle_range: 3.0
+raytrace_range: 3.5
+
+inflation_radius: 0.2
+cost_scaling_factor: 3.0
+
+map_type: costmap
+observation_sources: scan
+scan: {sensor_frame: base_scan, data_type: LaserScan, topic: scan, marking: true, clearing: true}

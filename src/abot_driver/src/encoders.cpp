@@ -28,7 +28,7 @@ int main(int argc, char** argv)
         &EncoderWiringPiISR::encoderISR2,
         &EncoderWiringPiISR::encoderPosition2);
 
-    ros::Rate sleep_rate(50);
+    ros::Rate sleep_rate(100);
 
     std_msgs::Float32 left_wheel_msg;
     std_msgs::Float32 right_wheel_msg;

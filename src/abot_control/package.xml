@@ -20,11 +20,7 @@
 	<run_depend>controller_manager</run_depend>
 	<run_depend>hardware_interface</run_depend>
 	<run_depend>roscpp</run_depend>
-	<!-- temp -->
 	<run_depend>trajectory_msgs</run_depend>
-	<run_depend>turtlebot_teleop</run_depend>
-	<run_depend>depthimage_to_laserscan</run_depend>
-	<!-- ! -->
-	<run_depend>effort_controllers</run_depend>
+
 	<export></export>
 </package>

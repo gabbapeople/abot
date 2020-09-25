@@ -1,20 +1,40 @@
 <launch>
-    <!-- Arguments -->
-    <arg name="cmd_vel_topic" default="/cmd_vel" />
-    <arg name="odom_topic" default="odom" />
-    <arg name="move_forward_only" default="false"/>
+  <!-- Arguments -->
+  <arg name="cmd_vel_topic" default="/mobile_abot/cmd_vel" />
 
-    <!-- move_base -->
-    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-        <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
-        <rosparam file="$(find abot_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
-        <rosparam file="$(find abot_navigation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
-        <rosparam file="$(find abot_navigation)/config/local_costmap_params.yaml" command="load" />
-        <rosparam file="$(find abot_navigation)/config/global_costmap_params.yaml" command="load" />
-        <rosparam file="$(find abot_navigation)/config/move_base_params.yaml" command="load" />
-        <rosparam file="$(find abot_navigation)/config/dwa_local_planner_params.yaml" command="load" />
-        <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
-        <remap from="odom" to="$(arg odom_topic)"/>
-        <param name="DWAPlannerROS/min_vel_x" value="0.0" if="$(arg move_forward_only)" />
-    </node>
+  <arg name="base_global_planner" default="navfn/NavfnROS"/>
+  <arg name="base_local_planner" default="dwa_local_planner/DWAPlannerROS"/>
+
+  <!-- move_base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <param name="base_global_planner" value="$(arg base_global_planner)"/>
+    <param name="base_local_planner" value="$(arg base_local_planner)"/>  
+<!--     
+    <rosparam file="$(find abot_navigation)/param/turtle/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find abot_navigation)/param/turtle/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find abot_navigation)/param/turtle/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find abot_navigation)/param/turtle/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find abot_navigation)/param/turtle/move_base_params.yaml" command="load" />
+    <rosparam file="$(find abot_navigation)/param/turtle/dwa_local_planner_params.yaml" command="load" /> -->
+
+
+    <!-- <rosparam file="$(find abot_navigation)/param/husky/planner.yaml" command="load"/>
+    <rosparam file="$(find abot_navigation)/param/husky/costmap_common.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find abot_navigation)/param/husky/costmap_common.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find abot_navigation)/param/husky/costmap_local.yaml" command="load" ns="local_costmap" />
+    <param name="local_costmap/width" value="1.0"/>
+    <param name="local_costmap/height" value="1.0"/>
+    <rosparam file="$(find abot_navigation)/param/husky/costmap_global_static.yaml" command="load" ns="global_costmap" /> -->
+
+
+    <rosparam file="$(find abot_navigation)/param/abot/planner.yaml" command="load"/>
+    <rosparam file="$(find abot_navigation)/param/abot/costmap_common.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find abot_navigation)/param/abot/costmap_common.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find abot_navigation)/param/abot/costmap_local.yaml" command="load" ns="local_costmap" />
+    <param name="local_costmap/width" value="2.5"/>
+    <param name="local_costmap/height" value="2.5"/>
+    <rosparam file="$(find abot_navigation)/param/abot/costmap_global.yaml" command="load" ns="global_costmap" />
+    <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
+
+  </node>
 </launch>

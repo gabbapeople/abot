@@ -54,7 +54,7 @@ int main(int argc, char **argv) {
 
     ros::NodeHandle node;
 
-    ros::Rate sleep_rate(50);
+    ros::Rate sleep_rate(100);
 
     ros::Publisher ir_sensor_front_middle_pub = node.advertise<sensor_msgs::Range>("ir_sensor_front_middle", 1);
     ros::Publisher ir_sensor_front_left_pub = node.advertise<sensor_msgs::Range>("ir_sensor_front_left", 1);

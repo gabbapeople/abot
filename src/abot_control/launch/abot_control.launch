@@ -1,25 +1,18 @@
 <launch>
-	<!--roslaunch file for starting the ros_control controllers-->
-	<arg name="model" default="$(find abot_description)/urdf/abot.xacro" />
+
 	<!-- Load joint controller configurations from YAML file to parameter server -->
 	<rosparam file="$(find abot_control)/config/abot_control.yaml" command="load"/>
-	<rosparam file="$(find abot_control)/config/abot_common.yaml" command="load"/>
+
 	<!-- load the controllers -->
-	<node name="controller_spawner"
-            pkg="controller_manager"
-            type="spawner" 
-            respawn="false"
-            output="screen"
-            ns="/abot" 
-            args="joint_state_controller diff_drive_controller"></node>
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
+			args="joint_state_controller mobile_abot"></node>
+
 	<!-- convert joint states to TF transforms for rviz, etc -->
-	<node name="robot_state_publisher" 
-            pkg="robot_state_publisher" 
-            type="robot_state_publisher" 
-            respawn="false" 
-            output="screen">
-		<!-- Converts the xacro robot information to UDRF and use it as a robot_description parameter-->
-		<param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
-		<remap from="/joint_states" to="/abot/joint_states" />
-	</node>
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen" />
+
+	<!-- EKF -->
+	<!-- <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
+		<rosparam command="load" file="$(find abot_control)/config/localization.yaml" />
+	</node> -->
+
 </launch>

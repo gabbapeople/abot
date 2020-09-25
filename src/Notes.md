@@ -77,7 +77,7 @@ people@robot-user:~/ROS_TEMP$ rsync -avz -e ssh ubuntu@robot:ROS/abot/ abot/
 RPI
 ```shell
 ubuntu@robot:~$ cd ROS/abot
-ubuntu@robot:~$ rsync -avz -e ssh people@robot-user:ROS_DEV/abot/src src
+rsync -avz -e ssh people@192.168.88.111:ROS_DEV/abot/src ~/ROS/abot/
 ```
 
 # RPI Headless Boot without HDMI
@@ -99,5 +99,22 @@ root@robot-user:/home/people/ROS_PACKAGES# rospack find gmapping
 # ROS map saver
 
 ```shell
-rosrun map_server map_saver -f src/abot_slam/map/map1
+cd src/abot_slam/maps
+rosrun map_server map_saver -f map1
+```
+
+# ROS clean log
+
+```shell
+rosclean check
+rosclean purge
+```
+
+# ROS drivers grpahics for rviz
+
+```shell
+sudo update-pciids
+lspci | grep -E "VGA|3D"
+sudo lspci -v -s 01:00.0
+Kernel driver in use: nouveau
 ```

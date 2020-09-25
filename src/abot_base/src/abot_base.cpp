@@ -7,9 +7,7 @@
 
 typedef boost::chrono::steady_clock time_source;
 
-void controlLoop(AbotHardwareInterface& hardware,
-    controller_manager::ControllerManager& cm,
-    time_source::time_point& last_time) {
+void controlLoop(AbotHardwareInterface& hardware, controller_manager::ControllerManager& cm, time_source::time_point& last_time) {
 
     time_source::time_point this_time = time_source::now();
     boost::chrono::duration<double> elapsed_duration = this_time - last_time;
@@ -27,10 +25,10 @@ int main(int argc, char** argv) {
     ros::NodeHandle node;
     ros::NodeHandle private_node("~");
 
-    double control_frequency;
+    int control_frequency;
     double max_wheel_angular_speed;
 
-    private_node.param<double>("control_frequency", control_frequency, 1.0);
+    private_node.param<int>("control_frequency", control_frequency, 1);
     private_node.param<double>("max_wheel_angular_speed", max_wheel_angular_speed, 1.0);
 
     AbotHardwareInterface hardware(node, private_node, max_wheel_angular_speed);

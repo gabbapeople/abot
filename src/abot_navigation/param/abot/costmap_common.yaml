@@ -1,0 +1,40 @@
+# footprint:
+#   - [0.0800, 0]
+#   - [0.0703, -0.0406]
+#   - [0.0423, -0.0732]
+#   - [0.0250, -0.0829]
+#   - [0.0250, -0.1250]
+#   - [-0.0250, -0.1250]
+#   - [-0.0250, -0.0887]
+#   - [-0.0437, -0.0819]
+#   - [-0.0817, -0.0468]
+#   - [-0.1000, 0]
+#   - [-0.0817, 0.0468]
+#   - [-0.0437, 0.0819]
+#   - [-0.0250, 0.0887]
+#   - [-0.0250, 0.1250]
+#   - [0.0250, 0.1250]
+#   - [0.0250, 0.0829]
+#   - [0.0423, 0.0732]
+#   - [0.0703, 0.0406]
+
+robot_radius: 0.125
+
+robot_base_frame: base_footprint
+
+resolution: 0.02
+
+obstacle_range: 4.5
+raytrace_range: 5.0
+
+#layer definitions
+static:
+    map_topic: /map
+    # subscribe_to_updates: true
+
+obstacles:
+    observation_sources: abot_lidar
+    abot_lidar: {data_type: LaserScan, clearing: true, marking: true, topic: scan, inf_is_valid: true}
+
+inflation:
+    inflation_radius: 0.8

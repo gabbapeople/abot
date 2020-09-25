@@ -8,9 +8,9 @@
   <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
 
   <!--Rviz-->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="false"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="false" output="screen"/>
 
-  <!-- Nodes -->
+  <!-- SLAM -->
   <include file="$(find abot_slam)/launch/abot_slam.launch" />
 
 </launch>

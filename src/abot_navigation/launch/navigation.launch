@@ -1,0 +1,13 @@
+<launch>
+
+    <!-- Map server -->
+    <arg name="map_file" default="$(find abot_slam)/maps/map3.yaml"/>
+    <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+
+    <!-- Localisation AMCL -->
+    <include file="$(find abot_navigation)/launch/amcl.launch" />
+
+    <!-- move_base -->
+    <include file="$(find abot_navigation)/launch/move_base.launch"/>
+
+</launch>
