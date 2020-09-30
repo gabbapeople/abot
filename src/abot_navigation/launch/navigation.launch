@@ -1,7 +1,7 @@
 <launch>
 
     <!-- Map server -->
-    <arg name="map_file" default="$(find abot_slam)/maps/map3.yaml"/>
+    <arg name="map_file" default="$(find abot_slam)/maps/map2.yaml"/>
     <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
 
     <!-- Localisation AMCL -->

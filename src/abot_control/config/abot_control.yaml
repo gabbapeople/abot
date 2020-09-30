@@ -31,5 +31,3 @@ mobile_abot:
 
   # odom_frame_id: /diff_drive_odom
   # publish_cmd: true
-
-  estimate_velocity_from_position: false

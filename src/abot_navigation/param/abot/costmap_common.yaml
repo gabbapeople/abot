@@ -1,24 +1,24 @@
-# footprint:
-#   - [0.0800, 0]
-#   - [0.0703, -0.0406]
-#   - [0.0423, -0.0732]
-#   - [0.0250, -0.0829]
-#   - [0.0250, -0.1250]
-#   - [-0.0250, -0.1250]
-#   - [-0.0250, -0.0887]
-#   - [-0.0437, -0.0819]
-#   - [-0.0817, -0.0468]
-#   - [-0.1000, 0]
-#   - [-0.0817, 0.0468]
-#   - [-0.0437, 0.0819]
-#   - [-0.0250, 0.0887]
-#   - [-0.0250, 0.1250]
-#   - [0.0250, 0.1250]
-#   - [0.0250, 0.0829]
-#   - [0.0423, 0.0732]
-#   - [0.0703, 0.0406]
+footprint:
+  - [0.0800, 0]
+  - [0.0703, -0.0406]
+  - [0.0423, -0.0732]
+  - [0.0250, -0.0829]
+  - [0.0250, -0.1250]
+  - [-0.0250, -0.1250]
+  - [-0.0250, -0.0887]
+  - [-0.0437, -0.0819]
+  - [-0.0817, -0.0468]
+  - [-0.1000, 0]
+  - [-0.0817, 0.0468]
+  - [-0.0437, 0.0819]
+  - [-0.0250, 0.0887]
+  - [-0.0250, 0.1250]
+  - [0.0250, 0.1250]
+  - [0.0250, 0.0829]
+  - [0.0423, 0.0732]
+  - [0.0703, 0.0406]
 
-robot_radius: 0.125
+#robot_radius: 0.120
 
 robot_base_frame: base_footprint
 
@@ -29,12 +29,53 @@ raytrace_range: 5.0
 
 #layer definitions
 static:
-    map_topic: /map
-    # subscribe_to_updates: true
+  map_topic: /map
 
 obstacles:
-    observation_sources: abot_lidar
-    abot_lidar: {data_type: LaserScan, clearing: true, marking: true, topic: scan, inf_is_valid: true}
+  observation_sources: abot_lidar #abot_ir_fm abot_ir_fl abot_ir_fr
+  abot_lidar:
+    data_type: LaserScan
+    clearing: true
+    marking: true
+    topic: scan
+    inf_is_valid: true
+  # abot_ir_fm:
+  #   data_type: LaserScan
+  #   marking: true
+  #   topic: abot/ir_sensor_front_middle
+  #   inf_is_valid: true
+  #   raytrace_range: 0.7
+  #   obstacle_range: 0.65
+  # abot_ir_fr:
+  #   data_type: LaserScan
+  #   clearing: true
+  #   marking: true
+  #   topic: abot/ir_sensor_front_right
+  #   inf_is_valid: true
+  #   raytrace_range: 0.7
+  #   obstacle_range: 0.65
+  # abot_ir_fl:
+  #   data_type: LaserScan
+  #   clearing: true
+  #   marking: true
+  #   topic: abot/ir_sensor_front_left
+  #   inf_is_valid: true
+  #   raytrace_range: 0.7
+  #   obstacle_range: 0.65
+
+# inflations:
+#   inflation_radius: 0.5
+#   cost_scaling_factor: 10.0
+
+# inflation_local:
+#   inflation_radius: 0.150
 
 inflation:
-    inflation_radius: 0.8
+  inflation_radius: 0.200
+
+# ir:
+#   topics: ["/ir_sensor_front_left", "/ir_sensor_front_right", "/ir_sensor_front_middle"]
+#   no_readings_timeout: 0.0
+#   clear_threshold: 0.4
+#   mark_threshold: 0.8
+#   clear_on_max_reading: true

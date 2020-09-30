@@ -1,10 +1,13 @@
 global_frame: odom
 rolling_window: true
 
-update_frequency: 10.0
-publish_frequency: 10.0
-transform_tolerance: 0.5
+update_frequency: 1.0
+publish_frequency: 2.0
+transform_tolerance: 1.0
+
+cost_scaling_factor: 2.0
 
 plugins:
   - {name: obstacles,                 type: "costmap_2d::ObstacleLayer"}
   - {name: inflation,                 type: "costmap_2d::InflationLayer"}
+  # - {name: ir,                        type: "range_sensor_layer::RangeSensorLayer"}
