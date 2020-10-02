@@ -2,8 +2,8 @@
   <!-- Arguments -->
   <arg name="cmd_vel_topic" default="/mobile_abot/cmd_vel" />
 
-  <!-- <arg name="base_global_planner" default="navfn/NavfnROS"/> -->
-  <arg name="base_global_planner" default="global_planner/GlobalPlanner"/>
+  <arg name="base_global_planner" default="navfn/NavfnROS"/>
+  <!-- <arg name="base_global_planner" default="global_planner/GlobalPlanner"/> -->
   
   <arg name="base_local_planner" default="dwa_local_planner/DWAPlannerROS"/>
 

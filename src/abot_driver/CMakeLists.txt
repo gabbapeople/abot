@@ -5,9 +5,16 @@ add_compile_options(-std=c++11)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  rospy
+  pcl_ros
   std_msgs
+  sensor_msgs
+  geometry_msgs
+  tf2
+  tf2_geometry_msgs
+  rplidar_ros
 )
+
+find_package(Boost REQUIRED)
 
 set(wiringPi_include "/usr/local/include")
 
@@ -39,3 +46,6 @@ target_link_libraries(dc_motors ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt
 
 add_executable(sharp_sensors src/sharp_sensors.cpp)
 target_link_libraries(sharp_sensors ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt -lm -lrt)
+
+add_executable(sensors_array src/sensors_array.cpp)
+target_link_libraries(sensors_array ${catkin_LIBRARIES})

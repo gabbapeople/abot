@@ -30,7 +30,7 @@
 		<axis xyz="0 0 0" />
 	</joint>
 	<!-- IR sensor front middle CAD link -->
-	<link name="ir_f">
+	<link name="ir_fm">
 		<inertial>
 			<origin xyz="-0.0193778284817564 0.0517927266118569 0.000510012680068063" rpy="0 0 0" />
 			<mass value="0.0029706780872837" />
@@ -51,14 +51,14 @@
 		</collision>
 	</link>
 	<!-- IR sensor front middle joint -->
-	<joint name="ir_f_to_base" type="fixed">
-		<origin xyz="0.088 0 0.065" rpy="0 0 0" />
-		<parent link="base_link" />
-		<child link="ir_f" />
+	<joint name="ir_fm_to_base" type="fixed">
+		<origin xyz="0.0812 0 -0.0165" rpy="0 0 0" />
+		<parent link="abot_base" />
+		<child link="ir_fm" />
 		<axis xyz="0 0 0" />
 	</joint>
 	<!-- IR sensor front left CAD link -->
-	<link name="ir_l">
+	<link name="ir_fl">
 		<inertial>
 			<origin xyz="-0.00737194484411242 0.000279264844105703 0.000510014496335439" rpy="0 0 0" />
 			<mass value="0.00297067826138337" />
@@ -79,14 +79,14 @@
 		</collision>
 	</link>
 	<!-- IR sensor front left joint -->
-	<joint name="ir_l_to_base" type="fixed">
-		<origin xyz="0 0.098 0.065" rpy="0 0 1.57" />
-		<parent link="base_link" />
-		<child link="ir_l" />
+	<joint name="ir_fl_to_base" type="fixed">
+		<origin xyz="0.068572 0.054769 -0.0065" rpy="0 0 0.45321" />
+		<parent link="abot_base" />
+		<child link="ir_fl" />
 		<axis xyz="0 0 0" />
 	</joint>
 	<!-- IR sensor front right CAD link -->
-	<link name="ir_r">
+	<link name="ir_fr">
 		<inertial>
 			<origin xyz="-0.0073719435479474 0.000279266429044269 0.000510012687927432" rpy="0 0 0" />
 			<mass value="0.00297067925092848" />
@@ -107,10 +107,10 @@
 		</collision>
 	</link>
 	<!-- IR sensor front right joint -->
-	<joint name="ir_r_to_base" type="fixed">
-		<origin xyz="0 -0.098 0.065" rpy="0 0 -1.57" />
-		<parent link="base_link" />
-		<child link="ir_r" />
+	<joint name="ir_fr_to_base" type="fixed">
+		<origin xyz="0.0685721788194783 -0.0547694638499224 -0.00650000000000129" rpy="0 0 -0.45320639368436" />
+		<parent link="abot_base" />
+		<child link="ir_fr" />
 		<axis xyz="0 0 0" />
 	</joint>
 </robot>

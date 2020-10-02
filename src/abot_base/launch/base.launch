@@ -1,8 +1,5 @@
 
 <launch>
-      <!-- Load robot model -->
-	<param name="robot_description" command="$(find xacro)/xacro '$(find abot_description)/urdf/abot.xacro' --inorder"/>
-	
       <!-- Base node -->
       <node name="abot_base_node" pkg="abot_base" type="abot_base_node" output="screen">
             <param name="control_frequency" type="int" value="100"/>
@@ -11,5 +8,5 @@
       
        <!-- Differential controller parameters and basic localization -->
       <include file="$(find abot_control)/launch/abot_control.launch" />
-
+      
 </launch>

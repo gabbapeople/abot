@@ -12,13 +12,11 @@
 	<build_depend>roscpp</build_depend>
 	<build_depend>roslaunch</build_depend>
 	<build_depend>hardware_interface</build_depend>
-	<build_depend>rplidar_ros</build_depend>
 	<build_depend>trajectory_msgs</build_depend>
 	<!-- exec_depend -->
 	<exec_depend>controller_manager</exec_depend>
 	<exec_depend>roscpp</exec_depend>
 	<exec_depend>hardware_interface</exec_depend>
-	<exec_depend>rplidar_ros</exec_depend>
 	<exec_depend>effort_controllers</exec_depend>
 	<exec_depend>trajectory_msgs</exec_depend>
 	<!-- ! -->

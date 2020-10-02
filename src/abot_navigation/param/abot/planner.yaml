@@ -2,19 +2,19 @@
 shutdown_costmaps: false
 
 controller_frequency: 10.0
-controller_patience: 15.0
+controller_patience: 1.0
 
 planner_frequency: 10.0
-planner_patience: 1.0
+planner_patience: 5.0
 
-oscillation_timeout: 5.0
+oscillation_timeout: 10.0
 oscillation_distance: 0.05
 
-cost_factor: 3
-neutral_cost: 50
-lethal_cost: 253
+# cost_factor: 1
+# neutral_cost: 50
+# lethal_cost: 100
 
-conservative_reset_dist: 0.150
+conservative_reset_dist: 0.200
 
 # Local planner
 DWAPlannerROS:
@@ -33,16 +33,16 @@ DWAPlannerROS:
   max_vel_y: 0.0
   min_vel_y: 0.0
 
-  max_vel_theta: 3.2
-  min_vel_theta: -3.2
+  max_vel_theta: 3.0
+  min_vel_theta: -3.0
 
   # ! Robot configuration parameters Base local
-  min_in_place_vel_theta: 3.2
+  min_in_place_vel_theta: 3.0
   holonomic_robot: false
   escape_vel: -0.1
 
   # Goal Tolerance Parameters
-  yaw_goal_tolerance: 0.05
+  yaw_goal_tolerance: 0.1
   xy_goal_tolerance: 0.1
   latch_xy_goal_tolerance: false
 
@@ -59,7 +59,7 @@ DWAPlannerROS:
   path_distance_bias: 32.0
   goal_distance_bias: 20.0
   occdist_scale: 0.01
-  forward_point_distance: 0.200
+  forward_point_distance: 0.150
   stop_time_buffer: 0.2
   scaling_speed: 0.25
   max_scaling_factor: 0.2
@@ -70,3 +70,6 @@ DWAPlannerROS:
 
   # Global Plan Parameters
   prune_plan: true
+
+  use_dwa: true
+  restore_defaults: false
