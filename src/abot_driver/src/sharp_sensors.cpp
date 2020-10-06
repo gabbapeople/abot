@@ -93,15 +93,15 @@ int main(int argc, char **argv) {
         ir_sensor_bl_distance = ir_sensor_bl.getDistance();
         ir_sensor_fl_distance = ir_sensor_fl.getDistance();
         
-        ir_sensor_f_pub.publish(prepareRangeMsg("ir_f", 10.0, GP2Y0A41SK_MIN_RANGE, GP2Y0A41SK_INF_RANGE, ir_sensor_f_distance));
-        ir_sensor_r_pub.publish(prepareRangeMsg("ir_r", 10.0, GP2Y0A41SK_MIN_RANGE, GP2Y0A41SK_INF_RANGE, ir_sensor_r_distance));
-        ir_sensor_b_pub.publish(prepareRangeMsg("ir_b", 10.0, GP2Y0A41SK_MIN_RANGE, GP2Y0A41SK_INF_RANGE, ir_sensor_b_distance));
-        ir_sensor_l_pub.publish(prepareRangeMsg("ir_l", 10.0, GP2Y0A41SK_MIN_RANGE, GP2Y0A41SK_INF_RANGE, ir_sensor_l_distance));
+        ir_sensor_f_pub.publish(prepareRangeMsg("ir_f", 10.0, GP2Y0A41SK_MIN_RANGE, GP2Y0A41SK_MAX_RANGE, ir_sensor_f_distance));
+        ir_sensor_r_pub.publish(prepareRangeMsg("ir_r", 10.0, GP2Y0A41SK_MIN_RANGE, GP2Y0A41SK_MAX_RANGE, ir_sensor_r_distance));
+        ir_sensor_b_pub.publish(prepareRangeMsg("ir_b", 10.0, GP2Y0A41SK_MIN_RANGE, GP2Y0A41SK_MAX_RANGE, ir_sensor_b_distance));
+        ir_sensor_l_pub.publish(prepareRangeMsg("ir_l", 10.0, GP2Y0A41SK_MIN_RANGE, GP2Y0A41SK_MAX_RANGE, ir_sensor_l_distance));
 
-        ir_sensor_fr_pub.publish(prepareRangeMsg("ir_fr", 10.0, GP2Y0A21SK_MIN_RANGE, GP2Y0A21SK_INF_RANGE, ir_sensor_fr_distance));
-        ir_sensor_br_pub.publish(prepareRangeMsg("ir_br", 10.0, GP2Y0A21SK_MIN_RANGE, GP2Y0A21SK_INF_RANGE, ir_sensor_br_distance));
-        ir_sensor_bl_pub.publish(prepareRangeMsg("ir_bl", 10.0, GP2Y0A21SK_MIN_RANGE, GP2Y0A21SK_INF_RANGE, ir_sensor_bl_distance));
-        ir_sensor_fl_pub.publish(prepareRangeMsg("ir_fl", 10.0, GP2Y0A21SK_MIN_RANGE, GP2Y0A21SK_INF_RANGE, ir_sensor_fl_distance));
+        ir_sensor_fr_pub.publish(prepareRangeMsg("ir_fr", 10.0, GP2Y0A21SK_MIN_RANGE, GP2Y0A21SK_MAX_RANGE, ir_sensor_fr_distance));
+        ir_sensor_br_pub.publish(prepareRangeMsg("ir_br", 10.0, GP2Y0A21SK_MIN_RANGE, GP2Y0A21SK_MAX_RANGE, ir_sensor_br_distance));
+        ir_sensor_bl_pub.publish(prepareRangeMsg("ir_bl", 10.0, GP2Y0A21SK_MIN_RANGE, GP2Y0A21SK_MAX_RANGE, ir_sensor_bl_distance));
+        ir_sensor_fl_pub.publish(prepareRangeMsg("ir_fl", 10.0, GP2Y0A21SK_MIN_RANGE, GP2Y0A21SK_MAX_RANGE, ir_sensor_fl_distance));
 
         sleep_rate.sleep();
     }

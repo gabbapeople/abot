@@ -44,7 +44,7 @@ double SharpIR_GP2Y0A41SK_WiringPi::getDistance() {
     double distance = 12.08 * pow(volts, -1.058) / 100; // m
     
     if (distance > GP2Y0A41SK_MAX_RANGE)
-        distance = GP2Y0A41SK_INF_RANGE;
+        distance = GP2Y0A41SK_MAX_RANGE;
     if (distance < GP2Y0A41SK_MIN_RANGE)  
         distance = GP2Y0A41SK_MIN_RANGE;
     return distance;

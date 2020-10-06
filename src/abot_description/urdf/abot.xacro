@@ -9,17 +9,17 @@
 	<xacro:property name="PI" value="3.14" />
 	<xacro:property name="wheel_radius" value="0.03195" />
 	<xacro:property name="caster_wheel_radius" value="0.007" />
-	<xacro:property name="wheel_width" value="0.0158" />
+	<xacro:property name="wheel_width" value="0.026" />
 	<xacro:property name="wheel_separation" value="0.128" />
-	<xacro:property name="clearance" value="0.01745" />
-	<xacro:property name="wheel_mass" value="0.032704" />
+	<xacro:property name="clearance" value="0.018" />
+	<xacro:property name="wheel_mass" value="0.050464" />
 	<xacro:property name="caster_wheel_mass" value="0.011207" />
 	<!-- Base_footprint -->
 	<link name="base_footprint">
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
 			<geometry>
-				<cylinder length="0.001" radius="0.100" />
+				<cylinder length="0.001" radius="0.010" />
 			</geometry>
 			<material name="Blue" />
 		</visual>
@@ -48,9 +48,9 @@
 	<!-- abot_base -->
 	<link name="abot_base">
 		<inertial>
-			<origin xyz="-0.013369146216312 -2.32945596953608E-07 0.0424852261575198" rpy="0 0 0" />
-			<mass value="0.505536908309907" />
-			<inertia ixx="0.000583839286669347" ixy="6.98274532231354E-09" ixz="-8.88829560312885E-06" iyy="0.000559099682201411" iyz="1.47383106096032E-09" izz="0.00104254331700213" />
+			<origin xyz="-0.0198506551333707 -2.90632176868541E-07 0.0455751019105062" rpy="0 0 0" />
+			<mass value="0.405194628185875" />
+			<inertia ixx="0.000555716898847813" ixy="4.06361886095622E-09" ixz="-9.13022146244237E-06" iyy="0.000532480608869663" iyz="-7.85503541476441E-11" izz="0.00101776419338989" />
 		</inertial>
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />

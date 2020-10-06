@@ -5,7 +5,7 @@
 int main(int argc, char **argv) {
     ros::init(argc, argv, "sensors_array");
 
-    RangeSensorArray array("/ir_point_cloud", "base_link");
+    RangeSensorArray array("/ir_point_cloud", "abot_base");
 
 
     array.addSensor("abot/ir_sensor_f", "ir_f");

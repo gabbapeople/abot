@@ -4,9 +4,9 @@
 	<!-- Left wheel CAD link -->
 	<link name="left_wheel1">
 		<inertial>
-			<origin xyz="7.0481E-20 -0.00013293 0" rpy="0 0 0" />
+			<origin xyz="-1.7545E-10 0.00056576 6.1245E-11" rpy="0 0 0" />
 			<mass value="${wheel_mass}" />
-			<inertia ixx="1.034E-05" ixy="6.5778E-20" ixz="-1.1387E-12" iyy="1.9808E-05" iyz="9.9943E-20" izz="1.034E-05" />
+			<inertia ixx="2.0701E-05" ixy="3.2217E-14" ixz="8.6674E-12" iyy="3.5827E-05" iyz="3.3202E-15" izz="2.0701E-05" />
 		</inertial>
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
@@ -25,7 +25,7 @@
 	<!-- Left wheel geometry link-->
 	<link name="left_wheel">
 		<inertial>
-			<origin xyz="7.0481E-20 -0.00013293 0" rpy="0 0 0" />
+			<origin xyz="-1.7545E-10 0.00056576 6.1245E-11" rpy="0 0 0" />
 			<mass value="${wheel_mass}" />
 			<xacro:cylinder_inertia mass="${wheel_mass}" radius="${wheel_radius}" height="${wheel_width}" />
 		</inertial>
@@ -45,10 +45,10 @@
 	</link>
 	<!-- Left wheel joints -->
 	<joint name="left_wheel_to_base" type="continuous">
-		<origin xyz="0 0.0639999999999998 0.0145000000000007" rpy="0 0 0" />
+		<origin xyz="0 0.0679999999999999 0.0145000000000007" rpy="0 0 0" />
 		<parent link="abot_base" />
 		<child link="left_wheel" />
-		<axis xyz="0 -1 0" />
+		<axis xyz="0 1 0" />
 	</joint>
 	<joint name="left_wheel_to_wheel1" type="fixed">
 		<parent link="left_wheel" />
