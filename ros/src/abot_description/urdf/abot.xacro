@@ -28,6 +28,9 @@
 	<link name="base_link">
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+				<sphere radius="0.001" />
+			</geometry>
 		</visual>
 	</link>
 	<joint name="base_link_to_abot_base" type="fixed">
