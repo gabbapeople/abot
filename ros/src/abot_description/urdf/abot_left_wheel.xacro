@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="abot"
+	xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- left_wheel -->
+	<link name="abot_left_wheel">
+		<inertial>
+			<origin xyz="1.4324E-10 0.00056576 4.9274E-11" rpy="0 0 0" />
+			<mass value="0.050464" />
+			<inertia ixx="2.0701E-05" ixy="-1.8954E-14" ixz="-1.2393E-15" iyy="3.5827E-05" iyz="-1.8375E-14" izz="2.0701E-05" />
+		</inertial>
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://abot_description/meshes/abot_left_wheel.STL" />
+			</geometry>
+			<material name="Green" />
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://abot_description/meshes/abot_left_wheel.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<joint name="left_wheel_to_base" type="continuous">
+		<origin xyz="0 0.068 0.0145" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="abot_left_wheel" />
+		<axis xyz="0 1 0" />
+	</joint>
+</robot>
