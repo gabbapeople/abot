@@ -3,8 +3,8 @@
 	xmlns:xacro="http://www.ros.org/wiki/xacro">
 	<!-- Matherials -->
 	<xacro:include filename="$(find abot_description)/urdf/abot_matherials.xacro" />
-	<!-- base_link -->
-	<link name="base_link">
+	<!-- abot_base -->
+	<link name="abot_base">
 	  <inertial>
 			<origin xyz="-0.02452 1.4288E-14 0.021229" rpy="0 0 0" />
 			<mass value="0.26675" />
@@ -24,6 +24,17 @@
 			</geometry>
 		</collision>
 	</link>
+    <!-- base_link -->
+	<link name="base_link">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+		</visual>
+	</link>
+	<joint name="base_link_to_abot_base" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="abot_base" />
+	</joint>
     <!-- Wheels -->
 	<xacro:include filename="$(find abot_description)/urdf/abot_left_wheel.xacro" />
 	<xacro:include filename="$(find abot_description)/urdf/abot_right_wheel.xacro" />
