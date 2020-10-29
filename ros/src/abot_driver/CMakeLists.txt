@@ -15,5 +15,5 @@ include_directories(
 )
 
 # TESTS
-add_executable(dc_motor_wiring_pi_test src/test/dc_motor_wiring_pi_test.cpp)
-target_link_libraries(dc_motor_wiring_pi_test ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt -lm -lrt)
+add_executable(friction_test src/test/friction_test.cpp)
+target_link_libraries(friction_test ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt -lm -lrt)
