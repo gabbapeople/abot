@@ -41,8 +41,6 @@ private:
 
     double left_wheel_position;
     double right_wheel_position;
-    double left_wheel_position_offset;
-    double right_wheel_position_offset;
 
     double initial_left_wheel_angle;
     double initial_right_wheel_angle;
@@ -81,23 +79,15 @@ void EncodersPair::encodersCallback(const ros::TimerEvent& event) {
     left_wheel_angle = normalize(raw_left_wheel_angle - initial_left_wheel_angle);
     right_wheel_angle = normalize(raw_right_wheel_angle - initial_right_wheel_angle);
 
-    double delta_left_wheel = left_wheel_angle - left_wheel_position - left_wheel_position_offset;
-    double delta_right_wheel = right_wheel_angle - right_wheel_position - right_wheel_position_offset;
+    double delta_left_wheel = left_wheel_angle - left_wheel_position;
+    double delta_right_wheel = right_wheel_angle - right_wheel_position;
 
-    if (std::abs(delta_left_wheel) < 1) {
-        left_wheel_position += delta_left_wheel;
-        left_wheel_velocity = delta_left_wheel / elapsed.toSec();
-    } else {
-        left_wheel_position_offset += delta_left_wheel;
-    }
+    left_wheel_position += delta_left_wheel;
+    left_wheel_velocity = delta_left_wheel / elapsed.toSec();
 
-    if (std::abs(delta_right_wheel) < 1) {
-        right_wheel_position += delta_right_wheel;
-        right_wheel_velocity = delta_right_wheel / elapsed.toSec();
-    } else {
-        right_wheel_position_offset += delta_right_wheel;
-    }
-
+    right_wheel_position += delta_right_wheel;
+    right_wheel_velocity = delta_right_wheel / elapsed.toSec();
+ 
     left_wheel_angle_msg.data = left_wheel_angle;
     right_wheel_angle_msg.data = right_wheel_angle;
 
