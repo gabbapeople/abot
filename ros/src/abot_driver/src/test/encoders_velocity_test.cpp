@@ -24,10 +24,8 @@ private:
 
     double left_wheel_angle;
     double right_wheel_angle;
-    
     double left_wheel_velocity;
     double right_wheel_velocity;
-
     double left_wheel_position;
     double right_wheel_position;
 
@@ -40,8 +38,8 @@ EncodersPair::EncodersPair(double update_rate) :
     encoder_left(ENCODER_1_PIN_A, ENCODER_1_PIN_B, &EncoderWiringPiISR::encoderISR1, &EncoderWiringPiISR::encoderPosition1),
     encoder_right(ENCODER_2_PIN_A, ENCODER_2_PIN_B, &EncoderWiringPiISR::encoderISR2, &EncoderWiringPiISR::encoderPosition2) {
     
-    left_wheel_velocity_pub = node.advertise<std_msgs::Float32>("/left_wheel_velocity", 1);
-    right_wheel_velocity_pub = node.advertise<std_msgs::Float32>("/right_wheel_velocity", 1);
+    left_wheel_velocity_pub = node.advertise<std_msgs::Float32>("/left_wheel_encoder_velocity", 1);
+    right_wheel_velocity_pub = node.advertise<std_msgs::Float32>("/right_wheel_encoder_velocity", 1);
 
     timer = node.createTimer(ros::Duration(update_rate), &EncodersPair::encodersCallback, this);
     last_time = time_source::now();

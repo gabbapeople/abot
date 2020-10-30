@@ -20,3 +20,6 @@ target_link_libraries(encoders_velocity_test ${catkin_LIBRARIES} -lwiringPi -lpt
 
 add_executable(encoders src/encoders.cpp)
 target_link_libraries(encoders ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt -lm -lrt)
+
+add_executable(dc_motors src/dc_motors.cpp)
+target_link_libraries(dc_motors ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt -lm -lrt)
