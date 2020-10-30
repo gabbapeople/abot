@@ -53,12 +53,16 @@ namespace EncoderWiringPiISR {
 class EncoderWiringPi {
 public:
     EncoderWiringPi(const int &pinA, const int &pinB, void (*isrFunction)(void), volatile long* encoderPosition);
-    long getPosition();
-    double getRotation();
+    double getAngle();
 private:
     int _pinA;
     int _pinB;
     volatile long* _encoderPosition;
+
+    double _initial_angle;
+
+    double ticks2Angle(long position);
+    double normalize(double angle);
 };
 
 EncoderWiringPi::EncoderWiringPi(const int &pinA, const int &pinB, void (*isrFunction)(void), volatile long* encoderPosition) {
@@ -89,16 +93,24 @@ EncoderWiringPi::EncoderWiringPi(const int &pinA, const int &pinB, void (*isrFun
         throw std::runtime_error("");
     }
 
+    _initial_angle = ticks2Angle(*_encoderPosition);
+
     ROS_INFO("Encoder wiringPi: ISR setup");
 }
 
-long EncoderWiringPi::getPosition() {
-    return *_encoderPosition;
+double EncoderWiringPi::getAngle() {
+    double current_angle = ticks2Angle(*_encoderPosition);
+    return normalize(current_angle - _initial_angle);
 }
 
-double EncoderWiringPi::getRotation() {
-    long position = *_encoderPosition;
-    return 2 * M_PI * static_cast<double>(position) / TICKS_PER_REVOLUTION;
+double EncoderWiringPi::ticks2Angle(long position) {
+	return position * ((double)2 * M_PI / TICKS_PER_REVOLUTION);
+}
+
+double EncoderWiringPi::normalize(double angle) {
+	angle = fmod(angle + M_PI, 2 * PI);	
+	if (angle < 0) angle += 2 * PI;
+	return angle - M_PI;
 }
 
 #endif // ENCODER_WIRING_PI_HPP_
