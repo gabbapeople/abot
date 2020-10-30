@@ -8,10 +8,13 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
+set(wiringPi_include "/usr/local/include")
+
 catkin_package()
 
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  ${wiringPi_include}
 )
 
 # TESTS
