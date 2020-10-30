@@ -13,7 +13,7 @@ include_directories(
 )
 
 add_executable(motors_friction_test src/test/motors_friction_test.cpp)
-target_link_libraries(motorsfriction_test ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt -lm -lrt)
+target_link_libraries(motors_friction_test ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt -lm -lrt)
 
 add_executable(encoders_test src/test/encoders_test.cpp)
 target_link_libraries(encoders_test ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt -lm -lrt)
