@@ -36,6 +36,13 @@ private:
 
     double left_wheel_angle;
     double right_wheel_angle;
+    double left_wheel_velocity;
+    double right_wheel_velocity;
+
+    double left_wheel_position;
+    double right_wheel_position;
+    double left_wheel_position_offset;
+    double right_wheel_position_offset;
 
     double initial_left_wheel_angle;
     double initial_right_wheel_angle;
@@ -71,32 +78,42 @@ void EncodersPair::encodersCallback(const ros::TimerEvent& event) {
 
     double raw_left_wheel_angle = -1 * encoder_left.getRotation();
     double raw_right_wheel_angle = 1 * encoder_right.getRotation();
+    left_wheel_angle = normalize(raw_left_wheel_angle - initial_left_wheel_angle);
+    right_wheel_angle = normalize(raw_right_wheel_angle - initial_right_wheel_angle);
 
-    double current_left_wheel_angle = normalize(raw_left_wheel_angle - initial_left_wheel_angle);
-    double current_right_wheel_angle = normalize(raw_right_wheel_angle - initial_right_wheel_angle);
+    double delta_left_wheel = left_wheel_angle - left_wheel_position - left_wheel_position_offset;
+    double delta_right_wheel = right_wheel_angle - right_wheel_position - right_wheel_position_offset;
 
-    double delta_left_wheel_angle = left_wheel_angle - current_left_wheel_angle;
-    double delta_right_wheel_angle = right_wheel_angle - current_right_wheel_angle;
+    if (std::abs(delta_left_wheel) < 1) {
+        left_wheel_position += delta_left_wheel;
+        left_wheel_velocity = delta_left_wheel / elapsed.toSec();
+    } else {
+        left_wheel_position_offset += delta_left_wheel;
+    }
 
-    left_wheel_velocity_msg.data = delta_left_wheel_angle / elapsed.toSec();
-    right_wheel_velocity_msg.data = delta_right_wheel_angle / elapsed.toSec();
-
-    left_wheel_velocity_pub.publish(left_wheel_velocity_msg);
-    right_wheel_velocity_pub.publish(right_wheel_velocity_msg);
-
-    left_wheel_angle = current_left_wheel_angle;
-    right_wheel_angle = current_right_wheel_angle;
+    if (std::abs(delta_right_wheel) < 1) {
+        right_wheel_position += delta_right_wheel;
+        right_wheel_velocity = delta_right_wheel / elapsed.toSec();
+    } else {
+        right_wheel_position_offset += delta_right_wheel;
+    }
 
     left_wheel_angle_msg.data = left_wheel_angle;
     right_wheel_angle_msg.data = right_wheel_angle;
 
+    left_wheel_velocity_msg.data = left_wheel_velocity;
+    right_wheel_velocity_msg.data = right_wheel_velocity;
+
     left_wheel_angle_pub.publish(left_wheel_angle_msg);
     right_wheel_angle_pub.publish(right_wheel_angle_msg);
+
+    left_wheel_velocity_pub.publish(left_wheel_velocity_msg);
+    right_wheel_velocity_pub.publish(right_wheel_velocity_msg);
 }
 
 int main(int argc, char** argv) {
     ros::init(argc, argv, "encoders_test");
-    EncodersPair encoders_pair(1.0);
+    EncodersPair encoders_pair(0.1);
     ros::spin();
     return 0;
 }
