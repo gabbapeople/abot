@@ -9,10 +9,11 @@ private:
     ros::NodeHandle node;
     ros::Publisher left_wheel_angle_pub;
     ros::Publisher right_wheel_angle_pub;
-    ros::Publisher left_wheel_velocity_pub;
-    ros::Publisher right_wheel_velocity_pub;
 
     ros::Timer timer;
+
+    std_msgs::Float32 left_wheel_angle_msg;
+    std_msgs::Float32 right_wheel_angle_msg;
 
     EncoderWiringPi encoder_left;
     EncoderWiringPi encoder_right;
