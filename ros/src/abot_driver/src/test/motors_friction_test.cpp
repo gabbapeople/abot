@@ -41,7 +41,7 @@ void rightMotorCallback(const std_msgs::Float32& msg) {
 }
 
 int main(int argc, char **argv) {
-    ros::init(argc, argv, "dc_motor_wiringpi_test");
+    ros::init(argc, argv, "motors_friction_test");
     ros::NodeHandle node;
     ros::Subscriber left_motor_sub = node.subscribe("left_motor", 1, &leftMotorCallback);
     ros::Subscriber right_motor_sub = node.subscribe("right_motor", 1, &rightMotorCallback);

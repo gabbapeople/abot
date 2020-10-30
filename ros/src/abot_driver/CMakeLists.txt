@@ -12,5 +12,8 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(friction_test src/test/friction_test.cpp)
-target_link_libraries(friction_test ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt -lm -lrt)
+add_executable(motors_friction_test src/test/motors_friction_test.cpp)
+target_link_libraries(motorsfriction_test ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt -lm -lrt)
+
+add_executable(encoders_test src/test/encoders_test.cpp)
+target_link_libraries(encoders_test ${catkin_LIBRARIES} -lwiringPi -lpthread -lcrypt -lm -lrt)
