@@ -1,5 +1,5 @@
 
-#include "../encoder_wiring_pi.hpp"
+#include "encoder_wiring_pi.hpp"
 #include "std_msgs/Float32.h"
 
 class EncodersPair {
@@ -10,7 +10,7 @@ private:
     ros::Publisher left_wheel_angle_pub;
     ros::Publisher right_wheel_angle_pub;
 
-    ros::Timer timer;
+    ros::Timer encoders_timer;
 
     std_msgs::Float32 left_wheel_angle_msg;
     std_msgs::Float32 right_wheel_angle_msg;
@@ -27,11 +27,9 @@ private:
 EncodersPair::EncodersPair(double update_rate) :
     encoder_left(ENCODER_1_PIN_A, ENCODER_1_PIN_B, &EncoderWiringPiISR::encoderISR1, &EncoderWiringPiISR::encoderPosition1),
     encoder_right(ENCODER_2_PIN_A, ENCODER_2_PIN_B, &EncoderWiringPiISR::encoderISR2, &EncoderWiringPiISR::encoderPosition2) {
-    
     left_wheel_angle_pub = node.advertise<std_msgs::Float32>("/abot/left_wheel_angle", 1);
     right_wheel_angle_pub = node.advertise<std_msgs::Float32>("/abot/right_wheel_angle", 1);
-
-    timer = node.createTimer(ros::Duration(update_rate), &EncodersPair::encodersCallback, this);
+    encoders_timer = node.createTimer(ros::Duration(update_rate), &EncodersPair::encodersCallback, this);
 }
 
 void EncodersPair::encodersCallback(const ros::TimerEvent& event) {

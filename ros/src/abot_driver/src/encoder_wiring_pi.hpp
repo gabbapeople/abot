@@ -9,7 +9,7 @@
 #define ENCODER_2_PIN_A 24  // Wiring pi 5 = BCM 24
 #define ENCODER_2_PIN_B 25  // Wiring pi 6 = BCM 25
 
-#define TICKS_PER_REVOLUTION 3840 // 1920 * 2
+#define PULSES_PER_REVOLUTION 1920
 
 namespace EncoderWiringPiISR {
 
@@ -73,10 +73,8 @@ EncoderWiringPi::EncoderWiringPi(const int &pinA, const int &pinB, void (*isrFun
 
     _pinA = pinA;
     _pinB = pinB;
-
     pinMode(_pinA, INPUT);
     pinMode(_pinB, INPUT);
-
     pullUpDnControl(_pinA, PUD_UP);
     pullUpDnControl(_pinB, PUD_UP);
 
@@ -91,7 +89,6 @@ EncoderWiringPi::EncoderWiringPi(const int &pinA, const int &pinB, void (*isrFun
     }
 
     _initial_angle = ticks2Angle(*_encoderPosition);
-
     ROS_INFO("Encoder wiringPi: ISR setup");
 }
 
@@ -101,7 +98,7 @@ double EncoderWiringPi::getAngle() {
 }
 
 double EncoderWiringPi::ticks2Angle(long position) {
-	return position * ((double)2 * M_PI / TICKS_PER_REVOLUTION);
+	return position * ((double)2 * M_PI / PULSES_PER_REVOLUTION / 2);
 }
 
 #endif // ENCODER_WIRING_PI_HPP_
