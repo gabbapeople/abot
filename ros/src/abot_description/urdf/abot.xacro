@@ -6,10 +6,10 @@
 	<xacro:include filename="$(find abot_description)/urdf/abot_matherials.xacro" />
 	<!-- abot_base -->
 	<link name="abot_base">
-	  <inertial>
-			<origin xyz="-0.02452 1.4288E-14 0.021229" rpy="0 0 0" />
-			<mass value="0.26675" />
-			<inertia ixx="0.00032378" ixy="-1.1141E-12" ixz="-9.1302E-06" iyy="0.00030073" iyz="-3.3253E-10" izz="0.000561" />
+		<inertial>
+  			<origin xyz="-0.018609547232146 0.00100725867922426 0.0368403920902579" rpy="0 0 0" />
+  			<mass value="0.38366067400424" />
+  			<inertia ixx="0.000455060033055237" ixy="-1.42665016686539E-06" ixz="-9.36574661563202E-06" iyy="0.000428067922539319" iyz="-4.00231856414886E-07" izz="0.000800906575951907" />
 		</inertial>
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
