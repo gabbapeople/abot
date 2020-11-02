@@ -17,9 +17,9 @@
 
     <build_export_depend>controller_manager</build_export_depend>
     <build_export_depend>hardware_interface</build_export_depend>
-	<build_depend_depend>trajectory_msgs</build_depend_depend>
-	<build_depend_depend>roscpp</build_depend_depend>
-	<build_depend_depend>diff_drive_controller</build_depend_depend>
+	<build_export_depend>trajectory_msgs</build_export_depend>
+	<build_export_depend>roscpp</build_export_depend>
+	<build_export_depend>diff_drive_controller</build_export_depend>
 
     <exec_depend>controller_manager</exec_depend>
     <exec_depend>hardware_interface</exec_depend>
