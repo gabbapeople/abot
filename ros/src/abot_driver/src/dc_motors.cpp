@@ -24,9 +24,9 @@ void leftMotorCallback(const std_msgs::Float32& msg) {
     double motor_spd = msg.data;
     uint16_t motor_pwm = mapSpeed(std::abs(motor_spd), MAX_ANGLUAR_LEFT_WHEEL_SPEED, MOTOR_LEFT_PWM_THRESHOLD, RPI_MAX_PWM_VALUE);
     if (motor_spd > 0) {
-        left_dc_motor.cw(motor_pwm);
-    } else if (motor_spd < 0) {
         left_dc_motor.ccw(motor_pwm);
+    } else if (motor_spd < 0) {
+        left_dc_motor.cw(motor_pwm);
     } else if (motor_spd == 0) {
         left_dc_motor.stop();
     }      
@@ -36,9 +36,9 @@ void rightMotorCallback(const std_msgs::Float32& msg) {
     double motor_spd = msg.data;
     uint16_t motor_pwm = mapSpeed(std::abs(motor_spd), MAX_ANGLUAR_RIGHT_WHEEL_SPEED, MOTOR_RIGHT_PWM_THRESHOLD, RPI_MAX_PWM_VALUE);
     if (motor_spd > 0) {
-        right_dc_motor.cw(motor_pwm);
-    } else if (motor_spd < 0) {
         right_dc_motor.ccw(motor_pwm);
+    } else if (motor_spd < 0) {
+        right_dc_motor.cw(motor_pwm);
     } else if (motor_spd == 0) {
         right_dc_motor.stop();
     }

@@ -18,10 +18,10 @@
 
     <build_export_depend>controller_manager</build_export_depend>
     <build_export_depend>hardware_interface</build_export_depend>
-	<build_depend_depend>trajectory_msgs</build_depend_depend>
-	<build_depend_depend>ros_controllers</build_depend_depend>
-	<build_depend_depend>joint_state_controller</build_depend_depend>
-	<build_depend_depend>robot_state_publisher</build_depend_depend>
+	<build_export_depend>trajectory_msgs</build_export_depend>
+	<build_export_depend>ros_controllers</build_export_depend>
+	<build_export_depend>joint_state_controller</build_export_depend>
+	<build_export_depend>robot_state_publisher</build_export_depend>
 
     <exec_depend>controller_manager</exec_depend>
     <exec_depend>hardware_interface</exec_depend>
