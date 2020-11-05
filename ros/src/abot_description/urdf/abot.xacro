@@ -62,4 +62,5 @@
 	<xacro:include filename="$(find abot_description)/urdf/abot_left_wheel.xacro" />
 	<xacro:include filename="$(find abot_description)/urdf/abot_right_wheel.xacro" />
 	<xacro:include filename="$(find abot_description)/urdf/abot_caster_wheel.xacro" />
+	<xacro:include filename="$(find abot_description)/urdf/abot_sensors.xacro" />
 </robot>
