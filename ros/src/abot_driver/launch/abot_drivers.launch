@@ -1,4 +1,5 @@
 <launch>
-    <node name="encoders" pkg="abot_driver" type="encoders" output="screen" />
-    <node name="dc_motors" pkg="abot_driver" type="dc_motors" output="screen" />
+	<node name="encoders" pkg="abot_driver" type="encoders" output="screen" />
+	<node name="dc_motors" pkg="abot_driver" type="dc_motors" output="screen" />
+	<include file="$(find abot_driver)/launch/abot_lidar.launch" />
 </launch>
