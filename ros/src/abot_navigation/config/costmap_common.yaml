@@ -1,0 +1,32 @@
+robot_radius: 0.105
+
+robot_base_frame: base_footprint
+
+resolution: 0.02
+
+obstacle_range: 7.5
+raytrace_range: 8.0
+
+#layer definitions
+static:
+  map_topic: /map
+
+obstacles:
+  observation_sources: abot_lidar # abot_ir
+
+  abot_lidar:
+    data_type: LaserScan
+    clearing: true
+    marking: true
+    topic: scan
+    inf_is_valid: true
+
+  # abot_ir:
+  #   data_type: PointCloud2
+  #   clearing: true
+  #   marking: true
+  #   topic: /ir_point_cloud
+  #   inf_is_valid: true
+
+inflation:
+  inflation_radius: 0.135
